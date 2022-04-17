@@ -1,0 +1,9 @@
+.btn {
+    border: 1px solid lightgray;
+    margin-bottom: 15px;
+}
+
+.btn img {
+    width: 23px;
+    margin-right: 10px;
+}

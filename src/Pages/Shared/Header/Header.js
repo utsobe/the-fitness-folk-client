@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     return (
         <div className='sticky-top'>
-            <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
+            <Navbar className='navbar' collapseOnSelect expand="lg" bg="white" variant="light">
                 <Container>
                     <Navbar.Brand className='fw-bold fs-3 text-info' as={Link} to='/' >The Fitness Folk</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
