@@ -2,43 +2,43 @@
     {
         "id": 1,
         "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
-        "name": "Cristina Romero",
-        "description": "Incididunt occaecat aute aute aliqua velit. Laborum elit velit aliquip amet exercitation.",
+        "name": "The Fitness Folk",
+        "description": "Often best-suited to the expensive trainer, the one price model is a fixed, set-in-stone dollar amount that does not fluctuate based on location.",
         "price": 127
     },
     {
         "id": 2,
-        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
-        "name": "Carol Rocha",
-        "description": "Do exercitation elit cupidatat non magna ea et cupidatat aliqua eiusmod ullamco laborum laboris. Lorem ea labore reprehenderit ea.",
+        "image": "https://img.freepik.com/free-photo/young-healthy-man-athlete-doing-exercise-with-ropes-gym-single-male-model-practicing-hard-training-his-upper-body-concept-healthy-lifestyle-sport-fitness-bodybuilding-wellbeing_155003-27879.jpg?w=740&t=st=1650178639~exp=1650179239~hmac=04f1d18ed8145e035c7fb8274b6a95628e44102c48faf189f2f0cc71a1663c37",
+        "name": "Your Strength Service",
+        "description": "Gyms charging personal trainers to use their facilities is common in the industry. This typically ranges from $10 to $25 and should be passed on to the client.",
         "price": 148
     },
     {
         "id": 3,
-        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
-        "name": "Walls Parsons",
-        "description": "Commodo esse cillum veniam irure esse eiusmod irure cupidatat aute sit quis do elit. Velit laborum labore non sit irure non voluptate aliqua fugiat irure.",
+        "image": "https://img.freepik.com/free-photo/trainer-man-lying-lifting-dumbbells-gym_1262-16635.jpg?t=st=1650177549~exp=1650178149~hmac=007d4cbcb9dddb4628c1e618ea33292d986ee958e36b1872c87c084d438b24cc&w=740",
+        "name": "My Gymspiration",
+        "description": "Your target population differs from your local neighborhood in that different types of clientele will have different interests. For example the pricing.",
         "price": 145
     },
     {
         "id": 4,
-        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
-        "name": "Hess Huffman",
-        "description": "Elit laborum est nulla consectetur eiusmod amet aliquip amet laborum dolore do aliqua nisi non. Consectetur minim velit qui eu ea incididunt labore nostrud est.",
+        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-25228.jpg?w=740&t=st=1650178680~exp=1650179280~hmac=e6efe89e7d84cd951e106622fa8903515ba0cae095c9012358fd40f82772a39d",
+        "name": "Physique Freaks",
+        "description": "Personal training is considered to be a luxury item, similar to getting massages, manicures and pedicures, and even the occasional teeth whitening.",
         "price": 142
     },
     {
         "id": 5,
-        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
-        "name": "Mccray Wallace",
-        "description": "Elit ex labore do nulla. Cillum dolor occaecat quis consequat dolore velit fugiat.",
+        "image": "https://img.freepik.com/free-photo/concept-power-strength-healthy-lifestyle-sport-powerful-attractive-muscular-man-gym_155003-4993.jpg?w=740&t=st=1650178694~exp=1650179294~hmac=192fb7223e06ca45aee83aa4d156c55c0d8daf484bd9b5e19fa209adb17b7478",
+        "name": "More Muscle",
+        "description": "When setting your hourly rates as a personal trainer, you have to consider how much your clients expect to pay based on the rates in your city.",
         "price": 82
     },
     {
         "id": 6,
-        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
-        "name": "Shelton Newman",
-        "description": "Anim voluptate amet mollit non reprehenderit exercitation qui ex quis. Nulla mollit in consectetur aute fugiat.",
+        "image": "https://img.freepik.com/free-photo/young-muscular-caucasian-athlete-practicing-gym-with-weights_155003-32068.jpg?w=740&t=st=1650178647~exp=1650179247~hmac=caaad52c10608a4f5a281830223a8713ee017e104420e29d37440fa849ff29aa",
+        "name": "Time to Train",
+        "description": "The socioeconomic conditions within the respective regions differ and your pricing model will need to be aligned with whatever it is people are willing to pay.",
         "price": 114
     }
 ]

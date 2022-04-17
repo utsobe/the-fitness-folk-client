@@ -5,7 +5,7 @@ const Footer = () => {
     const year = date.getFullYear();
     return (
         <div>
-            <p><small>Copyright {year}</small></p>
+            <p className='text-center py-2'><small>Copyright &copy; {year} All Rights Reserved</small></p>
         </div>
     );
 };
