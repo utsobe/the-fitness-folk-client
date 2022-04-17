@@ -6,7 +6,7 @@ import Services from '../Services/Services';
 const Header = () => {
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
+            <Navbar className='sticky-top' collapseOnSelect expand="lg" bg="white" variant="light">
                 <Container>
                     <Navbar.Brand className='fw-bold fs-3 text-info' href="#home">Fitting-Man</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
