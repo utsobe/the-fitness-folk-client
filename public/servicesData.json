@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
+        "name": "Cristina Romero",
+        "description": "Incididunt occaecat aute aute aliqua velit. Laborum elit velit aliquip amet exercitation.",
+        "price": 127
+    },
+    {
+        "id": 2,
+        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
+        "name": "Carol Rocha",
+        "description": "Do exercitation elit cupidatat non magna ea et cupidatat aliqua eiusmod ullamco laborum laboris. Lorem ea labore reprehenderit ea.",
+        "price": 148
+    },
+    {
+        "id": 3,
+        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
+        "name": "Walls Parsons",
+        "description": "Commodo esse cillum veniam irure esse eiusmod irure cupidatat aute sit quis do elit. Velit laborum labore non sit irure non voluptate aliqua fugiat irure.",
+        "price": 145
+    },
+    {
+        "id": 4,
+        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
+        "name": "Hess Huffman",
+        "description": "Elit laborum est nulla consectetur eiusmod amet aliquip amet laborum dolore do aliqua nisi non. Consectetur minim velit qui eu ea incididunt labore nostrud est.",
+        "price": 142
+    },
+    {
+        "id": 5,
+        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
+        "name": "Mccray Wallace",
+        "description": "Elit ex labore do nulla. Cillum dolor occaecat quis consequat dolore velit fugiat.",
+        "price": 82
+    },
+    {
+        "id": 6,
+        "image": "https://img.freepik.com/free-photo/couple-training-together-gym_1303-26848.jpg?size=626&ext=jpg&ga=GA1.1.647701002.1645029178",
+        "name": "Shelton Newman",
+        "description": "Anim voluptate amet mollit non reprehenderit exercitation qui ex quis. Nulla mollit in consectetur aute fugiat.",
+        "price": 114
+    }
+]
