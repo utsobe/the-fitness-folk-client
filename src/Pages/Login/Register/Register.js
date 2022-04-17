@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 
 
 const Register = () => {
+    const [agree, setAgree] = useState(false);
+
     const navigate = useNavigate();
     const [
         createUserWithEmailAndPassword,
@@ -15,9 +18,11 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
-    console.log(user);
-
     const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
+
+    if (loading || updating) {
+        return <Loading></Loading>;
+    }
 
     const handleRegister = async event => {
         event.preventDefault();
@@ -28,11 +33,9 @@ const Register = () => {
         await createUserWithEmailAndPassword(email, password);
 
         await updateProfile({ displayName: name });
-        console.log('Updated profile');
 
         navigate('/')
     }
-
 
     return (
         <div className='d-flex justify-content-center align-items-center'>
@@ -41,6 +44,7 @@ const Register = () => {
                 <Form onSubmit={handleRegister} className='w-100'>
                     <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Control type="text" name='name' placeholder="Your Name" required />
+                        <p className='text-danger'>Something worng</p>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -51,9 +55,9 @@ const Register = () => {
                         <Form.Control type="password" name='password' placeholder="Password" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Agreed to terms and condition" />
+                        <Form.Check onClick={() => setAgree(!agree)} className={!agree ? 'text-danger' : ''} type="checkbox" label="Agreed to terms and condition" />
                     </Form.Group>
-                    <Button variant="info" type="submit">
+                    <Button disabled={!agree} variant="info" type="submit">
                         Register
                     </Button>
                 </Form>
