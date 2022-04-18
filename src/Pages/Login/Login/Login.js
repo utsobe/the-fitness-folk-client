@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './Login.css';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -10,6 +10,8 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import './Login.css';
 
 const Login = () => {
+    const [email, setEmail] = useState({ value: '', error: '' });
+    const [password, setPassword] = useState({ value: '', error: '' });
     const emailRef = useRef('');
     const location = useLocation();
     const navigate = useNavigate();

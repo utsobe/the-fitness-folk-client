@@ -7,43 +7,106 @@ import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateP
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import toast from 'react-hot-toast';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { async } from '@firebase/util';
 
 
 const Register = () => {
+    const [name, setName] = useState({ value: '', error: '' });
+    const [email, setEmail] = useState({ value: '', error: '' });
+    const [password, setPassword] = useState({ value: '', error: '' });
     const [agree, setAgree] = useState(false);
-
     const navigate = useNavigate();
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    // const [
+    //     createUserWithEmailAndPassword,
+    //     user,
+    //     loading,
+    //     error,
+    // ] = useCreateUserWithEmailAndPassword(auth);
 
-    const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
 
-    const [sendEmailVerification, sending, VerificationError] = useSendEmailVerification(auth);
 
-    if (loading || updating || sending) {
-        return <Loading></Loading>;
+    // const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
+
+    // const [sendEmailVerification, sending, VerificationError] = useSendEmailVerification(auth);
+
+
+
+
+    const handleName = nameInput => {
+        setName({ value: nameInput, error: '' });
     }
+
+    const handleEmail = emailInput => {
+        if (/\S+@\S+\.\S+/.test(emailInput)) {
+            setEmail({ value: emailInput, error: '' });
+        }
+        else {
+            setEmail({ value: '', error: 'Invalid email' });
+        }
+    }
+
+    const handlePassword = passwordInput => {
+        if (passwordInput.length < 7) {
+            setPassword({ value: '', error: 'Password too short' });
+        }
+        else {
+            setPassword({ value: passwordInput, error: '' })
+        }
+    }
+
+    // if (error) {
+    //     return toast.error(error.message, { id: 'createError' });
+    // }
+
+    // 'Account already registered'
 
     const handleRegister = async event => {
         event.preventDefault();
-        const name = event.target.name.value;
-        const email = event.target.email.value;
-        const password = event.target.password.value;
+        // const name = event.target.name.value;
+        // const email = event.target.email.value;
+        // const password = event.target.password.value;
 
-        await createUserWithEmailAndPassword(email, password);
-        toast.success('User created', { id: 'success' });
+        if (name.value === '') {
+            setName({ value: '', error: 'Name is required' })
+        }
+        if (email.value === '') {
+            setEmail({ value: '', error: 'Email is required' });
+        }
+        if (password.value === '') {
+            setPassword({ value: '', error: 'Password is required' });
+        }
 
-        await updateProfile({ displayName: name });
 
-        await sendEmailVerification();
-        toast.success('Sent email', { id: 'success2' });
 
-        navigate('/')
+
+
+        if (name.value && email.value && password.value) {
+            await createUserWithEmailAndPassword(auth, email.value, password.value)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log(user);
+                    toast.success('User created', { id: 'error' });
+                    navigate('/');
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    if (errorMessage.includes('email-already-in-use')) {
+                        toast.error('Already exist', { id: 'error' })
+                    }
+                    else {
+                        toast.error(errorMessage, { id: 'error' })
+                    }
+                });
+        }
+
+
     }
+
+    // if (loading || updating || sending) {
+    //     return <Loading></Loading>;
+    // }
 
     return (
         <div className='d-flex justify-content-center align-items-center'>
@@ -51,16 +114,24 @@ const Register = () => {
                 <h2 className='mb-3'>Please Register</h2>
                 <Form onSubmit={handleRegister} className='w-100'>
                     <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.Control type="text" name='name' placeholder="Your Name" required />
-                        <p className='text-danger'>Something worng</p>
+                        <Form.Control type="text" name='name' onBlur={event => handleName(event.target.value)} placeholder="Your Name" />
+                        {
+                            name?.error && <p className="text-danger"><small>{name.error}</small></p>
+                        }
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Control type="email" name='email' placeholder="Enter email" required />
+                        <Form.Control type="email" name='email' onBlur={event => handleEmail(event.target.value)} placeholder="Enter email" />
+                        {
+                            email?.error && <p className="text-danger"><small>{email.error}</small></p>
+                        }
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Control type="password" name='password' placeholder="Password" required />
+                        <Form.Control type="password" name='password' onBlur={event => handlePassword(event.target.value)} placeholder="Password" />
+                        {
+                            password?.error && <p className="text-danger"><small>{password.error}</small></p>
+                        }
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check onClick={() => setAgree(!agree)} className={!agree ? 'text-danger' : ''} type="checkbox" label="Agreed to terms and condition" />
