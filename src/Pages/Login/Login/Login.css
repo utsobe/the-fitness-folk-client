@@ -1,4 +1,13 @@
-.input:focus {
-    border: none;
-    border-bottom: 1px solid gray;
+.fgp:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+}
+
+.register-link {
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
 }

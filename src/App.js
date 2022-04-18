@@ -1,5 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home/Home';
 import Checkout from './Pages/Checkout/Checkout';
@@ -16,6 +17,7 @@ function App() {
   return (
     <div>
       <Header></Header>
+      <Toaster></Toaster>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/services' element={<Services></Services>}></Route>

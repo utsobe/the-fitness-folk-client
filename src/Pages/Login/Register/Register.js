@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import './Register.css';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
+import toast from 'react-hot-toast';
 
 
 const Register = () => {
@@ -20,7 +22,9 @@ const Register = () => {
 
     const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
 
-    if (loading || updating) {
+    const [sendEmailVerification, sending, VerificationError] = useSendEmailVerification(auth);
+
+    if (loading || updating || sending) {
         return <Loading></Loading>;
     }
 
@@ -31,8 +35,12 @@ const Register = () => {
         const password = event.target.password.value;
 
         await createUserWithEmailAndPassword(email, password);
+        toast.success('User created', { id: 'success' });
 
         await updateProfile({ displayName: name });
+
+        await sendEmailVerification();
+        toast.success('Sent email', { id: 'success2' });
 
         navigate('/')
     }
@@ -57,11 +65,11 @@ const Register = () => {
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check onClick={() => setAgree(!agree)} className={!agree ? 'text-danger' : ''} type="checkbox" label="Agreed to terms and condition" />
                     </Form.Group>
-                    <Button disabled={!agree} variant="info" type="submit">
+                    <Button disabled={!agree} className='w-100' variant="info" type="submit">
                         Register
                     </Button>
                 </Form>
-                <p className='mt-3'>Already Have an Account? <Link to='/login'>Login</Link></p>
+                <p className='mt-3 text-center'>Already Have an Account? <Link to='/login' className='login-link'>Login</Link></p>
                 <SocialLogin></SocialLogin>
             </div>
         </div>
