@@ -14,14 +14,14 @@ const Header = () => {
     }
     return (
         <div className='sticky-top'>
-            <Navbar className='navbar' collapseOnSelect expand="lg" bg="white" variant="light">
+            <Navbar className='nav' collapseOnSelect expand="lg" bg="white" variant="light">
                 <Container>
                     <Navbar.Brand className='fw-bold fs-3 text-info' as={Link} to='/' >The Fitness Folk</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className='ms-auto'>
-                            <Nav.Link as={Link} to='/' href='#home'>Home</Nav.Link>
-                            <Nav.Link href="#services">Services</Nav.Link>
+                            <Nav.Link as={Link} to='/home'>Home</Nav.Link>
+                            <Nav.Link href="home#services">Services</Nav.Link>
                             <Nav.Link as={Link} to='/about'>About</Nav.Link>
                             <Nav.Link as={Link} to='/blog'>Blog</Nav.Link>
                             {

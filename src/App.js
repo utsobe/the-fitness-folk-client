@@ -12,6 +12,7 @@ import Register from './Pages/Login/Register/Register';
 import About from './Pages/About/About';
 import Blog from './Pages/Blog/Blog';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
+import NotFound from './Pages/Shared/NotFound/NotFound';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Toaster></Toaster>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/services' element={<Services></Services>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
@@ -30,6 +32,7 @@ function App() {
         }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div >

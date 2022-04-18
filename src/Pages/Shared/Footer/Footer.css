@@ -1,0 +1,14 @@
+.bg-color {
+    background-color: #F2F2F2;
+}
+
+.link-list {
+    text-align: left;
+    list-style: none;
+    display: inline;
+}
+
+.link-list li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

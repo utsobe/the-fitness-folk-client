@@ -51,7 +51,7 @@ const Login = () => {
 
     return (
         <div className='d-flex justify-content-center align-items-center'>
-            <div style={{ width: '400px' }} className='mt-5 p-5 rounded-3 shadow shadow-lg'>
+            <div style={{ width: '400px' }} className='my-5 p-5 rounded-3 shadow shadow-lg'>
                 <h2 className='mb-3'>Please Login</h2>
                 <Form onSubmit={handleLogin} className='w-100'>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
