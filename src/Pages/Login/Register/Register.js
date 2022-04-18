@@ -3,12 +3,10 @@ import './Register.css';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
-import Loading from '../../Shared/Loading/Loading';
 import toast from 'react-hot-toast';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { async } from '@firebase/util';
 
 
 const Register = () => {
@@ -16,22 +14,12 @@ const Register = () => {
     const [email, setEmail] = useState({ value: '', error: '' });
     const [password, setPassword] = useState({ value: '', error: '' });
     const [agree, setAgree] = useState(false);
+    const [verify, setVerify] = useState({});
     const navigate = useNavigate();
-    // const [
-    //     createUserWithEmailAndPassword,
-    //     user,
-    //     loading,
-    //     error,
-    // ] = useCreateUserWithEmailAndPassword(auth);
 
+    const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
 
-
-    // const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
-
-    // const [sendEmailVerification, sending, VerificationError] = useSendEmailVerification(auth);
-
-
-
+    const [sendEmailVerification, sending, VerificationError] = useSendEmailVerification(auth);
 
     const handleName = nameInput => {
         setName({ value: nameInput, error: '' });
@@ -55,14 +43,9 @@ const Register = () => {
         }
     }
 
-    // if (error) {
-    //     return toast.error(error.message, { id: 'createError' });
-    // }
-
-    // 'Account already registered'
-
     const handleRegister = async event => {
         event.preventDefault();
+        // optional
         // const name = event.target.name.value;
         // const email = event.target.email.value;
         // const password = event.target.password.value;
@@ -77,34 +60,35 @@ const Register = () => {
             setPassword({ value: '', error: 'Password is required' });
         }
 
-
-
-
-
         if (name.value && email.value && password.value) {
             await createUserWithEmailAndPassword(auth, email.value, password.value)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    console.log(user);
                     toast.success('User created', { id: 'error' });
+                    toast.success('Sent email verification', { id: 'verify' });
                     navigate('/');
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
+                    setVerify(errorMessage);
                     if (errorMessage.includes('email-already-in-use')) {
-                        toast.error('Already exist', { id: 'error' })
+                        toast.error('Already registered', { id: 'error' })
                     }
                     else {
                         toast.error(errorMessage, { id: 'error' })
                     }
                 });
+
+            await updateProfile({ displayName: name.value });
+            console.log('Updated profile');
+
+            await sendEmailVerification();
         }
-
-
     }
 
-    // if (loading || updating || sending) {
+    // optional
+    // if (updating || sending) {
     //     return <Loading></Loading>;
     // }
 
