@@ -10,13 +10,13 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import './Login.css';
 
 const Login = () => {
-    const [email, setEmail] = useState({ value: '', error: '' });
-    const [password, setPassword] = useState({ value: '', error: '' });
     const emailRef = useRef('');
     const location = useLocation();
     const navigate = useNavigate();
 
     let from = location.state?.from?.pathname || "/";
+
+    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
 
     const [
         signInWithEmailAndPassword,
@@ -25,14 +25,16 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
-
-    if (loading) {
+    if (loading || sending) {
         return <Loading></Loading>;
     }
 
     if (user) {
         navigate(from, { replace: true });
+    }
+
+    if (error) {
+        toast.error('Your email or password is wrong', { id: 'error' });
     }
 
     const handleLogin = event => {
@@ -41,15 +43,19 @@ const Login = () => {
         const password = event.target.password.value;
 
         signInWithEmailAndPassword(email, password);
-
     }
+
 
     const handleResetPassword = async () => {
         const email = emailRef.current.value;
-        await sendPasswordResetEmail(email);
-        toast.success('Password Reset Email Sent');
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Reset Password email sent');
+        }
+        else {
+            toast('Please enter your email address')
+        }
     }
-
 
     return (
         <div className='d-flex justify-content-center align-items-center'>
